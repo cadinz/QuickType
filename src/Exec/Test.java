@@ -1,4 +1,4 @@
-package sample;
+package Exec;
 
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
