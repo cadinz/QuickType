@@ -1,4 +1,4 @@
-package QuickType;
+package controller;
 
 import javafx.fxml.Initializable;
 import org.jnativehook.GlobalScreen;
