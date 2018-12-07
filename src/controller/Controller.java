@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -14,6 +15,7 @@ import java.util.logging.Logger;
 
 public class Controller implements Initializable{
 
+    private boolean alt = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -26,18 +28,33 @@ public class Controller implements Initializable{
         }
         GlobalScreen.addNativeKeyListener(new NativeKeyListener( ) {
             @Override
-            public void nativeKeyTyped(NativeKeyEvent nativeKeyEvent) {
-
+            public void nativeKeyTyped(NativeKeyEvent e) {
             }
 
             @Override
-            public void nativeKeyPressed(NativeKeyEvent nativeKeyEvent) {
-                System.out.println(NativeKeyEvent.getKeyText(nativeKeyEvent.getKeyCode( )));
+            public void nativeKeyPressed(NativeKeyEvent e) {
+                if(e.getKeyCode() == NativeKeyEvent.VC_META){
+                    alt = true;
+                }
+                if(e.getKeyCode() == NativeKeyEvent.VC_1 && alt){
+                    System.out.println("알트 1");
+                }
+                if(e.getKeyCode() == NativeKeyEvent.VC_2 && alt){
+                    System.out.println("알트 2");
+                }
+                if(e.getKeyCode() == NativeKeyEvent.VC_3 && alt){
+                    Platform.exit();
+                    System.exit(0);
+                }
+
+                System.out.println(NativeKeyEvent.getKeyText(e.getKeyCode( )));
             }
 
             @Override
-            public void nativeKeyReleased(NativeKeyEvent nativeKeyEvent) {
-
+            public void nativeKeyReleased(NativeKeyEvent e) {
+                if (e.getKeyCode() == NativeKeyEvent.VC_META) {
+                    alt = false;
+                }
             }
         });
 
