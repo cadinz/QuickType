@@ -7,6 +7,10 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -37,7 +41,23 @@ public class Controller implements Initializable{
                     alt = true;
                 }
                 if(e.getKeyCode() == NativeKeyEvent.VC_1 && alt){
-                    System.out.println("알트 1");
+
+                    String text = "Hello World";
+                    StringSelection stringSelection = new StringSelection(text);
+                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                    clipboard.setContents(stringSelection, stringSelection);
+
+
+                    Robot robot = null;
+                    try {
+                        robot = new Robot();
+                    } catch (AWTException e1) {
+                        e1.printStackTrace( );
+                    }
+                    robot.keyPress(KeyEvent.VK_META);
+                    robot.keyPress(KeyEvent.VK_V);
+                    robot.keyRelease(KeyEvent.VK_V);
+                    robot.keyRelease(KeyEvent.VK_META);
                 }
                 if(e.getKeyCode() == NativeKeyEvent.VC_2 && alt){
                     System.out.println("알트 2");
