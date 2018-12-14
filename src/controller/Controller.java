@@ -1,8 +1,13 @@
 package controller;
 
-import exec.asdad;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -15,6 +20,9 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,13 +34,26 @@ import java.util.logging.Logger;
 
 public class Controller implements Initializable {
 
+
+    @FXML
+    private TextField TF1,TF2,TF3,TF4;
+    @FXML
+    private ImageView ImgBtn;
+    @FXML
+    private Label TimerLb,LbSave,LbExit;
+
+
     private static final SystemTray tray = SystemTray.getSystemTray( );
     private static final PopupMenu popup = new PopupMenu( );
     private static TrayIcon trayIcon;
     private boolean alt = false;
 
+
+
+
+
     protected static Image createImage(String path, String description) {
-        URL imageURL = asdad.class.getResource(path);
+        URL imageURL = Controller.class.getResource(path);
 
         if (imageURL == null) {
             System.err.println("Resource not found: " + path);
@@ -43,22 +64,29 @@ public class Controller implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        LbExit.setOnMouseClicked(new EventHandler<MouseEvent>( ) {
+            @Override
+            public void handle(MouseEvent event) {
+                System.exit(0);
+            }
+        });
 
         if (!SystemTray.isSupported( )) {
             // SystemTray is not supported
         }
-
-        trayIcon = new TrayIcon(createImage("aaa.jpg", "tray icon"));
-        trayIcon.setImageAutoSize(true);
-
+        try {
+            trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png", "tray icon"));
+            trayIcon.setImageAutoSize(true);
+        }catch (Exception e){
+            System.out.println(getClass( ).getResource("exec"));
+        }
 
         MenuItem exitItem = new MenuItem("Exit");
         exitItem.addActionListener(new ActionListener( ) {
             public void actionPerformed(ActionEvent e) {
-                tray.remove(trayIcon);
-                Platform.exit( );
                 System.exit(0);
             }
         });
@@ -69,7 +97,7 @@ public class Controller implements Initializable {
         menuItem.addActionListener(new ActionListener( ) {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = "https://www.google.com";
+                String url = "https://github.com/cadinz/QuickType";
                 Desktop desktop = Desktop.getDesktop( );
                 try {
                     desktop.browse(new URI(url));
@@ -138,7 +166,6 @@ public class Controller implements Initializable {
                     System.out.println("알트 2");
                 }
                 if (e.getKeyCode( ) == NativeKeyEvent.VC_3 && alt) {
-                    Platform.exit( );
                     System.exit(0);
                 }
 
