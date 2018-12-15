@@ -3,6 +3,7 @@ package controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -24,13 +26,14 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -41,6 +44,10 @@ public class Controller implements Initializable{
     private SystemTray tray = SystemTray.getSystemTray( );
     private PopupMenu popup = new PopupMenu( );
     private TrayIcon trayIcon;
+
+
+    @FXML
+    private TextField TF1, TF2, TF3, TF4;
 
     @FXML
     private ImageView Img;
@@ -66,6 +73,31 @@ public class Controller implements Initializable{
             return (new ImageIcon(imageURL, description)).getImage( );
         }
 
+    }
+    private void getTFText(){
+        try {
+
+            File file = new File("command.txt");
+            if(!file.exists()){
+                new FileWriter(file);
+            }
+            FileReader FR = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(FR);
+            String line = "";
+            TextField[] TFtmp = new TextField[4];
+            TFtmp[0] = TF1;
+            TFtmp[1] = TF2;
+            TFtmp[2] = TF3;
+            TFtmp[3] = TF4;
+
+            for (int i = 0; (line = bufferedReader.readLine()) != null; i++) {
+                TFtmp[i].setText(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace( );
+        } catch (IOException e) {
+            e.printStackTrace( );
+        }
     }
     private void initLbExit() {
         LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom( )));
@@ -195,14 +227,40 @@ public class Controller implements Initializable{
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
+    private void initLbSave(){
+
+        LbSave.setOnMousePressed(event -> LbSave.setEffect(new Bloom( )));
+        LbSave.setOnMouseReleased(event -> {
+            LbSave.setEffect(null);
+            new Thread(() -> {
+                sleep(100);
+                try {
+
+                    BufferedWriter out = new BufferedWriter(new FileWriter("command.txt"));
+                    out.write(TF1.getText().toString()+"\n");
+                    out.write(TF2.getText().toString()+"\n");
+                    out.write(TF3.getText().toString()+"\n");
+                    out.write(TF4.getText().toString()+"\n");
+                    out.flush();
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace( );
+                }
+
+            }).start( );
+        });
+
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        getTFText();
         initGlobalHook();
         initTimer();
         initLbExit();
+        initLbSave();
         initImgBtn();
         initTrayIcon();
 
