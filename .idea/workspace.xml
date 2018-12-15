@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/resources/QuickTypeIcon.png" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid1214.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/Exec/aaa.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/Exec/asdad$1.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/Exec/asdad$2.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/Exec/asdad.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$1.class" afterPath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$1.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$2.class" afterPath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$2.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$3.class" afterPath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$3.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/QuickType/controller/Controller.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/QuickType/resources/QuickType.fxml" afterPath="$PROJECT_DIR$/out/production/QuickType/resources/QuickType.fxml" />
+      <change beforePath="$PROJECT_DIR$/out/production/QuickType/controller/Controller$4.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" afterPath="$PROJECT_DIR$/src/controller/Controller.java" />
-      <change beforePath="$PROJECT_DIR$/src/exec/aaa.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/exec/asdad.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/resources/QuickType.fxml" afterPath="$PROJECT_DIR$/src/resources/QuickType.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,15 +76,29 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+            <state relative-caret-position="186">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2031#2032#0" expanded="true" />
-                <element signature="e#2077#2078#0" expanded="true" />
-                <element signature="e#2613#2614#0" expanded="true" />
-                <element signature="e#2659#2660#0" expanded="true" />
+                <element signature="method#sleep#0;class#Controller#0" expanded="false" />
+                <element signature="method#createImage#0;class#Controller#0" expanded="false" />
+                <element signature="method#initLbExit#0;class#Controller#0" expanded="false" />
+                <element signature="e#1880#2051#0" expanded="false" />
+                <element signature="e#1950#2031#0" expanded="false" />
+                <element signature="method#initMenuItem#0;class#Controller#0" expanded="false" />
+                <element signature="method#initGlobalHook#0;class#Controller#0" expanded="false" />
+                <element signature="method#initTrayIcon#0;class#Controller#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShadowEffect.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/javax/swing/plaf/nimbus/ShadowEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -202,8 +201,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,24 +214,6 @@
               <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
               <item name="QuickType" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QuickType" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QuickType" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QuickType" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="QuickType" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
@@ -249,13 +230,26 @@
               <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
               <item name="QuickType" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="exec" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QuickType" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="exec" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="QuickType" type="b2602c69:ProjectViewProjectNode" />
+              <item name="QuickType" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -275,6 +269,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="shadow&#9;FILE&#9;jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/javax/swing/plaf/nimbus/ShadowEffect.java&#10;shadowE&#9;FILE&#9;jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/javax/swing/plaf/nimbus/ShadowEffect.java&#10;shadowEff&#9;PSI&#9;JAVA://javax.swing.plaf.nimbus.ShadowEffect" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -491,6 +486,7 @@
       <workItem from="1544820773738" duration="290000" />
       <workItem from="1544821201308" duration="3939000" />
       <workItem from="1544826037072" duration="473000" />
+      <workItem from="1544880436121" duration="4207000" />
     </task>
     <task id="LOCAL-00001" summary="Modify Main dir -&gt; Exec&#10;Modify External Libraries path">
       <created>1543703243082</created>
@@ -503,7 +499,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16978000" />
+    <option name="totallyTimeSpent" value="21185000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1433" height="1027" extended-state="0" />
@@ -518,14 +514,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3436831" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14018692" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18547808" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -543,7 +540,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -569,20 +565,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/exec/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13792">
-          <caret line="862" column="0" lean-forward="false" selection-start-line="862" selection-start-column="0" selection-end-line="862" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -603,10 +585,14 @@
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2659#2660#0" expanded="true" />
+            <element signature="method#sleep#0;class#Controller#0" expanded="false" />
+            <element signature="method#createImage#0;class#Controller#0" expanded="false" />
+            <element signature="method#initLbExit#0;class#Controller#0" expanded="false" />
+            <element signature="e#1880#2051#0" expanded="false" />
+            <element signature="e#1950#2031#0" expanded="false" />
+            <element signature="method#initMenuItem#0;class#Controller#0" expanded="false" />
+            <element signature="method#initGlobalHook#0;class#Controller#0" expanded="false" />
+            <element signature="method#initTrayIcon#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -670,10 +656,14 @@
           <caret line="2" column="33" lean-forward="true" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2659#2660#0" expanded="true" />
+            <element signature="method#sleep#0;class#Controller#0" expanded="false" />
+            <element signature="method#createImage#0;class#Controller#0" expanded="false" />
+            <element signature="method#initLbExit#0;class#Controller#0" expanded="false" />
+            <element signature="e#1880#2051#0" expanded="false" />
+            <element signature="e#1950#2031#0" expanded="false" />
+            <element signature="method#initMenuItem#0;class#Controller#0" expanded="false" />
+            <element signature="method#initGlobalHook#0;class#Controller#0" expanded="false" />
+            <element signature="method#initTrayIcon#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -716,10 +706,14 @@
           <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2659#2660#0" expanded="true" />
+            <element signature="method#sleep#0;class#Controller#0" expanded="false" />
+            <element signature="method#createImage#0;class#Controller#0" expanded="false" />
+            <element signature="method#initLbExit#0;class#Controller#0" expanded="false" />
+            <element signature="e#1880#2051#0" expanded="false" />
+            <element signature="e#1950#2031#0" expanded="false" />
+            <element signature="method#initMenuItem#0;class#Controller#0" expanded="false" />
+            <element signature="method#initGlobalHook#0;class#Controller#0" expanded="false" />
+            <element signature="method#initTrayIcon#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -762,10 +756,14 @@
           <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2659#2660#0" expanded="true" />
+            <element signature="method#sleep#0;class#Controller#0" expanded="false" />
+            <element signature="method#createImage#0;class#Controller#0" expanded="false" />
+            <element signature="method#initLbExit#0;class#Controller#0" expanded="false" />
+            <element signature="e#1880#2051#0" expanded="false" />
+            <element signature="e#1950#2031#0" expanded="false" />
+            <element signature="method#initMenuItem#0;class#Controller#0" expanded="false" />
+            <element signature="method#initGlobalHook#0;class#Controller#0" expanded="false" />
+            <element signature="method#initTrayIcon#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -937,16 +935,36 @@
         <state />
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/javax/swing/plaf/nimbus/ShadowEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/javafx-src.zip!/javafx/event/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+        <state relative-caret-position="186">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2031#2032#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-            <element signature="e#2613#2614#0" expanded="true" />
-            <element signature="e#2659#2660#0" expanded="true" />
+            <element signature="method#sleep#0;class#Controller#0" expanded="false" />
+            <element signature="method#createImage#0;class#Controller#0" expanded="false" />
+            <element signature="method#initLbExit#0;class#Controller#0" expanded="false" />
+            <element signature="e#1880#2051#0" expanded="false" />
+            <element signature="e#1950#2031#0" expanded="false" />
+            <element signature="method#initMenuItem#0;class#Controller#0" expanded="false" />
+            <element signature="method#initGlobalHook#0;class#Controller#0" expanded="false" />
+            <element signature="method#initTrayIcon#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -1,13 +1,11 @@
 package controller;
 
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -17,12 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -35,24 +28,26 @@ import java.util.logging.Logger;
 public class Controller implements Initializable {
 
 
-    @FXML
-    private TextField TF1,TF2,TF3,TF4;
-    @FXML
-    private ImageView ImgBtn;
-    @FXML
-    private Label TimerLb,LbSave,LbExit;
-
-
     private static final SystemTray tray = SystemTray.getSystemTray( );
     private static final PopupMenu popup = new PopupMenu( );
     private static TrayIcon trayIcon;
+    @FXML
+    private TextField TF1, TF2, TF3, TF4;
+    @FXML
+    private ImageView ImgBtn;
+    @FXML
+    private Label TimerLb, LbSave, LbExit;
     private boolean alt = false;
 
+    private void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace( );
+        }
+    }
 
-
-
-
-    protected static Image createImage(String path, String description) {
+    private Image createImage(String path, String description) {
         URL imageURL = Controller.class.getResource(path);
 
         if (imageURL == null) {
@@ -64,66 +59,43 @@ public class Controller implements Initializable {
 
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        LbExit.setOnMouseClicked(new EventHandler<MouseEvent>( ) {
-            @Override
-            public void handle(MouseEvent event) {
+    private void initLbExit(){
+        LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom()));
+        LbExit.setOnMouseReleased(event -> {
+            LbExit.setEffect(null);
+            new Thread(() -> {
+                sleep(100);
                 System.exit(0);
-            }
+            }).start();
         });
+    }
 
-        if (!SystemTray.isSupported( )) {
-            // SystemTray is not supported
-        }
-        try {
-            trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png", "tray icon"));
-            trayIcon.setImageAutoSize(true);
-        }catch (Exception e){
-            System.out.println(getClass( ).getResource("exec"));
-        }
-
+    private void initMenuItem(){
         MenuItem exitItem = new MenuItem("Exit");
-        exitItem.addActionListener(new ActionListener( ) {
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-
-
+        exitItem.addActionListener(e -> System.exit(0));
         MenuItem menuItem = new MenuItem("Github");
-
-        menuItem.addActionListener(new ActionListener( ) {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String url = "https://github.com/cadinz/QuickType";
-                Desktop desktop = Desktop.getDesktop( );
-                try {
-                    desktop.browse(new URI(url));
-                } catch (IOException e1) {
-                    e1.printStackTrace( );
-                } catch (URISyntaxException e1) {
-                    e1.printStackTrace( );
-                }
+        menuItem.addActionListener(e -> {
+            String url = "https://github.com/cadinz/QuickType";
+            Desktop desktop = Desktop.getDesktop( );
+            try {
+                desktop.browse(new URI(url));
+            } catch (IOException e1) {
+                e1.printStackTrace( );
+            } catch (URISyntaxException e1) {
+                e1.printStackTrace( );
             }
         });
-
         popup.add(menuItem);
         popup.add(exitItem);
         trayIcon.setPopupMenu(popup);
-
-
         try {
             tray.add(trayIcon);
         } catch (AWTException e) {
             // TrayIcon could not be added
         }
+    }
 
-
-        // Obtain the image URL
-
-
+    private void initGlobalHook(){
         LogManager.getLogManager( ).reset( );
 
         Logger.getLogger(GlobalScreen.class.getPackage( ).getName( )).setLevel(Level.OFF);
@@ -179,6 +151,29 @@ public class Controller implements Initializable {
                 }
             }
         });
+    }
+
+    private void initTrayIcon(){
+
+        if (SystemTray.isSupported( )) {
+            try {
+                trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png", "tray icon"));
+                trayIcon.setImageAutoSize(true);
+            } catch (Exception e) {
+                System.out.println(getClass( ).getResource("exec"));
+            }
+        }else{
+            //Is Not Supported
+        }
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        initGlobalHook();
+        initLbExit();
+        initMenuItem();
+        initTrayIcon();
+
 
     }
 }
