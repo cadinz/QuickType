@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+<HBox fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="340.0" style="-fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
-      <Pane prefHeight="579.0" prefWidth="358.0" style="-fx-background-color: #FFFFFF;">
+      <Pane fx:id="pane" prefHeight="579.0" prefWidth="358.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
          <children>
             <Button layoutX="71.0" layoutY="150.0" mnemonicParsing="false" text="Button" />
             <Button layoutX="71.0" layoutY="192.0" mnemonicParsing="false" text="Button" />

@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.jnativehook.GlobalScreen;
@@ -21,8 +23,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URI;
@@ -35,15 +35,12 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-public class Controller implements Initializable,ActionListener{
+public class Controller implements Initializable{
 
 
     private SystemTray tray = SystemTray.getSystemTray( );
     private PopupMenu popup = new PopupMenu( );
     private TrayIcon trayIcon;
-
-    @FXML
-    private TextField TF1, TF2, TF3, TF4;
 
     @FXML
     private ImageView Img;
@@ -59,7 +56,6 @@ public class Controller implements Initializable,ActionListener{
             e.printStackTrace( );
         }
     }
-
     private Image createImage(String path, String description) {
         URL imageURL = Controller.class.getResource(path);
 
@@ -71,7 +67,6 @@ public class Controller implements Initializable,ActionListener{
         }
 
     }
-
     private void initLbExit() {
         LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom( )));
         LbExit.setOnMouseReleased(event -> {
@@ -82,7 +77,6 @@ public class Controller implements Initializable,ActionListener{
             }).start( );
         });
     }
-
     private void initMenuItem() {
         MenuItem exitItem = new MenuItem("Exit");
         exitItem.addActionListener(e -> System.exit(0));
@@ -102,7 +96,6 @@ public class Controller implements Initializable,ActionListener{
         popup.add(exitItem);
         trayIcon.setPopupMenu(popup);
     }
-
     private void initGlobalHook() {
         LogManager.getLogManager( ).reset( );
 
@@ -160,7 +153,6 @@ public class Controller implements Initializable,ActionListener{
             }
         });
     }
-
     private void initTrayIcon() {
 
         if (SystemTray.isSupported( )) {
@@ -219,10 +211,6 @@ public class Controller implements Initializable,ActionListener{
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }
 
 

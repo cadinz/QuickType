@@ -13,7 +13,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../resources/QuickType.fxml"));
         primaryStage.setTitle("QUICKTYPE");
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        scene.setFill(null);
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
@@ -22,8 +24,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-
-        System.out.println("하이");
         launch(args);
     }
 }
