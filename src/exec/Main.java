@@ -1,11 +1,14 @@
 package exec;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
@@ -18,7 +21,12 @@ public class Main extends Application {
         scene.setFill(null);
         primaryStage.setResizable(false);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.setOnCloseRequest(t -> {
+            Platform.exit();
+            System.exit(0);
+        });
         primaryStage.show();
+
     }
 
 

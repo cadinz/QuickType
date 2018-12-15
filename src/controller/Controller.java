@@ -3,7 +3,7 @@ package controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.EventHandler;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -11,9 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.jnativehook.GlobalScreen;
@@ -33,17 +30,17 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-public class Controller implements Initializable{
+import static java.awt.event.KeyEvent.getExtendedKeyCodeForChar;
+
+public class Controller implements Initializable {
 
 
     private SystemTray tray = SystemTray.getSystemTray( );
     private PopupMenu popup = new PopupMenu( );
-    private TrayIcon trayIcon;
 
 
     @FXML
@@ -63,35 +60,37 @@ public class Controller implements Initializable{
             e.printStackTrace( );
         }
     }
-    private Image createImage(String path, String description) {
+
+    private Image createImage(String path) {
         URL imageURL = Controller.class.getResource(path);
 
         if (imageURL == null) {
             System.err.println("Resource not found: " + path);
             return null;
         } else {
-            return (new ImageIcon(imageURL, description)).getImage( );
+            return (new ImageIcon(imageURL, "tray icon")).getImage( );
         }
 
     }
-    private void getTFText(){
+
+    private void getTFText() {
         try {
 
             File file = new File("command.txt");
-            if(!file.exists()){
+            if (!file.exists( )) {
                 new FileWriter(file);
             }
             FileReader FR = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(FR);
-            String line = "";
-            TextField[] TFtmp = new TextField[4];
-            TFtmp[0] = TF1;
-            TFtmp[1] = TF2;
-            TFtmp[2] = TF3;
-            TFtmp[3] = TF4;
+            String line;
+            TextField[] TFtp = new TextField[4];
+            TFtp[0] = TF1;
+            TFtp[1] = TF2;
+            TFtp[2] = TF3;
+            TFtp[3] = TF4;
 
-            for (int i = 0; (line = bufferedReader.readLine()) != null; i++) {
-                TFtmp[i].setText(line);
+            for (int i = 0; (line = bufferedReader.readLine( )) != null && i < TFtp.length; i++) {
+                TFtp[i].setText(line);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace( );
@@ -99,35 +98,7 @@ public class Controller implements Initializable{
             e.printStackTrace( );
         }
     }
-    private void initLbExit() {
-        LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom( )));
-        LbExit.setOnMouseReleased(event -> {
-            LbExit.setEffect(null);
-            new Thread(() -> {
-                sleep(100);
-                System.exit(0);
-            }).start( );
-        });
-    }
-    private void initMenuItem() {
-        MenuItem exitItem = new MenuItem("Exit");
-        exitItem.addActionListener(e -> System.exit(0));
-        MenuItem menuItem = new MenuItem("Github");
-        menuItem.addActionListener(e -> {
-            String url = "https://github.com/cadinz/QuickType";
-            Desktop desktop = Desktop.getDesktop( );
-            try {
-                desktop.browse(new URI(url));
-            } catch (IOException e1) {
-                e1.printStackTrace( );
-            } catch (URISyntaxException e1) {
-                e1.printStackTrace( );
-            }
-        });
-        popup.add(menuItem);
-        popup.add(exitItem);
-        trayIcon.setPopupMenu(popup);
-    }
+
     private void initGlobalHook() {
         LogManager.getLogManager( ).reset( );
 
@@ -139,6 +110,9 @@ public class Controller implements Initializable{
         }
 
         GlobalScreen.addNativeKeyListener(new NativeKeyListener( ) {
+
+
+
             @Override
             public void nativeKeyTyped(NativeKeyEvent e) {
             }
@@ -148,29 +122,54 @@ public class Controller implements Initializable{
                 if (e.getKeyCode( ) == NativeKeyEvent.VC_META) {
                     alt = true;
                 }
+
                 if (e.getKeyCode( ) == NativeKeyEvent.VC_1 && alt) {
 
-                    String text = "Hello World";
+                    String text = TF1.getText()+"";
                     StringSelection stringSelection = new StringSelection(text);
                     Clipboard clipboard = Toolkit.getDefaultToolkit( ).getSystemClipboard( );
                     clipboard.setContents(stringSelection, stringSelection);
-
-
                     Robot robot = null;
+
+
+
                     try {
                         robot = new Robot( );
                     } catch (AWTException e1) {
                         e1.printStackTrace( );
                     }
+
                     robot.keyPress(KeyEvent.VK_META);
                     robot.keyPress(KeyEvent.VK_V);
                     robot.keyRelease(KeyEvent.VK_V);
                     robot.keyRelease(KeyEvent.VK_META);
                 }
-                if (e.getKeyCode( ) == NativeKeyEvent.VC_2 && alt) {
-                    System.out.println("알트 2");
+                if (e.getKeyCode( ) == NativeKeyEvent.VC_ALT && alt) {
+                    Robot robot = null;
+
+
+
+                    try {
+                        robot = new Robot( );
+                    } catch (AWTException e1) {
+                        e1.printStackTrace( );
+                    }
+
+                    String keys = "hello world";
+                    sleep(100);
+
+                    for (char c : keys.toCharArray()) {
+                        int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+                        if (KeyEvent.CHAR_UNDEFINED == keyCode) {
+                            throw new RuntimeException(
+                                    "Key code not found for character '" + c + "'");
+                        }
+                        robot.keyPress(keyCode);
+                        robot.keyRelease(keyCode);
+                    }
                 }
                 if (e.getKeyCode( ) == NativeKeyEvent.VC_3 && alt) {
+                    Platform.exit( );
                     System.exit(0);
                 }
 
@@ -185,14 +184,33 @@ public class Controller implements Initializable{
             }
         });
     }
-    private void initTrayIcon() {
+
+    private void initSystemTray() {
 
         if (SystemTray.isSupported( )) {
             try {
-                trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png", "tray icon"));
+                TrayIcon trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png"));
                 trayIcon.setImageAutoSize(true);
                 tray.add(trayIcon);
-                initMenuItem( );
+                MenuItem exitItem = new MenuItem("Exit");
+                exitItem.addActionListener(e -> {
+                    System.exit(0);
+                    Platform.exit( );
+                });
+                MenuItem menuItem = new MenuItem("Github");
+                menuItem.addActionListener(e -> {
+                    String url = "https://github.com/cadinz/QuickType";
+                    Desktop desktop = Desktop.getDesktop( );
+                    try {
+                        desktop.browse(new URI(url));
+                    } catch (IOException | URISyntaxException e1) {
+                        e1.printStackTrace( );
+                    }
+                });
+
+                popup.add(menuItem);
+                popup.add(exitItem);
+                trayIcon.setPopupMenu(popup);
             } catch (Exception e) {
                 System.out.println(getClass( ).getResource("exec"));
             }
@@ -200,34 +218,49 @@ public class Controller implements Initializable{
             //Is Not Supported
         }
     }
-    private void initImgBtn(){
-        Img.setOnMousePressed(event -> {
-            Img.setX(Img.getX()+2);
-            Img.setY(Img.getY()+2);
-        });
-        Img.setOnMouseReleased(event -> {
-            Img.setX(Img.getX()-2);
-            Img.setY(Img.getY()-2);
-            Stage stage = (Stage) Img.getScene( ).getWindow( );
-            stage.setIconified(true);;
-        });
-    }
+
     private void initTimer() {
         TimerLb.setAlignment(Pos.CENTER);
 
         Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(1000),ae-> {
+                Duration.millis(1000), ae -> {
 
-            String now1 = new SimpleDateFormat( "aa hh:mm")
-            .format( Calendar.getInstance().getTime());
+            String now1 = new SimpleDateFormat("aa hh:mm")
+                    .format(Calendar.getInstance( ).getTime( ));
 
             TimerLb.setText(now1);
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        timeline.play( );
     }
-    private void initLbSave(){
+
+    private void clickLbExit() {
+        LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom( )));
+        LbExit.setOnMouseReleased(event -> {
+            LbExit.setEffect(null);
+            new Thread(() -> {
+                sleep(100);
+                Platform.exit( );
+                System.exit(0);
+            }).start( );
+        });
+    }
+
+    private void clickImgBtn() {
+        Img.setOnMousePressed(event -> {
+            Img.setX(Img.getX( ) + 2);
+            Img.setY(Img.getY( ) + 2);
+        });
+        Img.setOnMouseReleased(event -> {
+            Img.setX(Img.getX( ) - 2);
+            Img.setY(Img.getY( ) - 2);
+            Stage stage = (Stage) Img.getScene( ).getWindow( );
+            stage.setIconified(true);
+        });
+    }
+
+    private void clickLbSave() {
 
         LbSave.setOnMousePressed(event -> LbSave.setEffect(new Bloom( )));
         LbSave.setOnMouseReleased(event -> {
@@ -237,12 +270,12 @@ public class Controller implements Initializable{
                 try {
 
                     BufferedWriter out = new BufferedWriter(new FileWriter("command.txt"));
-                    out.write(TF1.getText().toString()+"\n");
-                    out.write(TF2.getText().toString()+"\n");
-                    out.write(TF3.getText().toString()+"\n");
-                    out.write(TF4.getText().toString()+"\n");
-                    out.flush();
-                    out.close();
+                    out.write(TF1.getText( ) + "\n");
+                    out.write(TF2.getText( ) + "\n");
+                    out.write(TF3.getText( ) + "\n");
+                    out.write(TF4.getText( ) + "\n");
+                    out.flush( );
+                    out.close( );
                 } catch (IOException e) {
                     e.printStackTrace( );
                 }
@@ -256,15 +289,13 @@ public class Controller implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        getTFText();
-        initGlobalHook();
-        initTimer();
-        initLbExit();
-        initLbSave();
-        initImgBtn();
-        initTrayIcon();
-
-
+        getTFText( );
+        initGlobalHook( );
+        initTimer( );
+        clickLbExit( );
+        clickLbSave( );
+        clickImgBtn( );
+        initSystemTray( );
 
 
     }
