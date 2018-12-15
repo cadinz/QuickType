@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
@@ -14,7 +15,7 @@
             <Pane layoutX="121.0" layoutY="26.0" prefHeight="12.0" prefWidth="99.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" />
             <Pane layoutX="13.0" layoutY="73.0" prefHeight="397.0" prefWidth="316.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;">
                <children>
-                  <Label fx:id="TimerLb" layoutX="141.0" layoutY="6.0" text="Label" />
+                  <Label fx:id="TimerLb" layoutX="118.0" layoutY="6.0" prefHeight="17.0" prefWidth="81.0" text="Waiting.." />
                   <Label fx:id="LbSave" layoutX="26.0" layoutY="41.0" text="&lt; Save" textFill="#4d8aeb">
                      <font>
                         <Font name="Apple Braille" size="18.0" />
@@ -33,7 +34,7 @@
                   <TextField fx:id="TF4" layoutX="42.0" layoutY="292.0" />
                </children>
             </Pane>
-            <ImageView fx:id="Imgbtn" fitHeight="83.0" fitWidth="99.0" layoutX="121.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true" >
+            <ImageView fx:id="Imgbtn" fitHeight="83.0" fitWidth="99.0" layoutX="121.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
             </ImageView>
          </children>
       </Pane>

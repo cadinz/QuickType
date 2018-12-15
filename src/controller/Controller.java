@@ -1,11 +1,17 @@
 package controller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -20,17 +26,23 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import static com.sun.tools.javac.util.Constants.format;
+
 public class Controller implements Initializable {
 
 
-    private static final SystemTray tray = SystemTray.getSystemTray( );
-    private static final PopupMenu popup = new PopupMenu( );
-    private static TrayIcon trayIcon;
+    private SystemTray tray = SystemTray.getSystemTray( );
+    private PopupMenu popup = new PopupMenu( );
+    private TrayIcon trayIcon;
     @FXML
     private TextField TF1, TF2, TF3, TF4;
     @FXML
@@ -59,18 +71,18 @@ public class Controller implements Initializable {
 
     }
 
-    private void initLbExit(){
-        LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom()));
+    private void initLbExit() {
+        LbExit.setOnMousePressed(event -> LbExit.setEffect(new Bloom( )));
         LbExit.setOnMouseReleased(event -> {
             LbExit.setEffect(null);
             new Thread(() -> {
                 sleep(100);
                 System.exit(0);
-            }).start();
+            }).start( );
         });
     }
 
-    private void initMenuItem(){
+    private void initMenuItem() {
         MenuItem exitItem = new MenuItem("Exit");
         exitItem.addActionListener(e -> System.exit(0));
         MenuItem menuItem = new MenuItem("Github");
@@ -88,14 +100,9 @@ public class Controller implements Initializable {
         popup.add(menuItem);
         popup.add(exitItem);
         trayIcon.setPopupMenu(popup);
-        try {
-            tray.add(trayIcon);
-        } catch (AWTException e) {
-            // TrayIcon could not be added
-        }
     }
 
-    private void initGlobalHook(){
+    private void initGlobalHook() {
         LogManager.getLogManager( ).reset( );
 
         Logger.getLogger(GlobalScreen.class.getPackage( ).getName( )).setLevel(Level.OFF);
@@ -153,25 +160,43 @@ public class Controller implements Initializable {
         });
     }
 
-    private void initTrayIcon(){
+    private void initTrayIcon() {
 
         if (SystemTray.isSupported( )) {
             try {
                 trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png", "tray icon"));
                 trayIcon.setImageAutoSize(true);
+                tray.add(trayIcon);
+                initMenuItem( );
             } catch (Exception e) {
                 System.out.println(getClass( ).getResource("exec"));
             }
-        }else{
+        } else {
             //Is Not Supported
         }
     }
+
+    private void initTimer() {
+        TimerLb.setAlignment(Pos.CENTER);
+
+        Timeline timeline = new Timeline(new KeyFrame(
+                Duration.millis(1000),ae-> {
+
+            String now1 = new SimpleDateFormat( "aa hh:mm")
+            .format( Calendar.getInstance().getTime());
+
+            TimerLb.setText(now1);
+
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        initTimer();
         initGlobalHook();
         initLbExit();
-        initMenuItem();
         initTrayIcon();
 
 
