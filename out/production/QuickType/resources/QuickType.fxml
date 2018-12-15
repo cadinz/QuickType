@@ -13,7 +13,7 @@
             <Button layoutX="71.0" layoutY="150.0" mnemonicParsing="false" text="Button" />
             <Button layoutX="71.0" layoutY="192.0" mnemonicParsing="false" text="Button" />
             <Pane layoutX="121.0" layoutY="26.0" prefHeight="12.0" prefWidth="99.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;" />
-            <Pane layoutX="13.0" layoutY="73.0" prefHeight="397.0" prefWidth="316.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;">
+            <Pane layoutX="13.0" layoutY="73.0" prefHeight="417.0" prefWidth="316.0" style="-fx-border-color: #000000; -fx-background-color: #FFFFFF;">
                <children>
                   <Label fx:id="TimerLb" layoutX="118.0" layoutY="6.0" prefHeight="17.0" prefWidth="81.0" text="Waiting.." />
                   <Label fx:id="LbSave" layoutX="26.0" layoutY="41.0" text="&lt; Save" textFill="#4d8aeb">
@@ -34,7 +34,10 @@
                   <TextField fx:id="TF4" layoutX="42.0" layoutY="292.0" />
                </children>
             </Pane>
-            <ImageView fx:id="Imgbtn" fitHeight="83.0" fitWidth="99.0" layoutX="121.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Img" fitHeight="74.0" fitWidth="73.0" layoutX="134.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@button.png" />
+               </image>
             </ImageView>
          </children>
       </Pane>

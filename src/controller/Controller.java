@@ -3,7 +3,6 @@ package controller;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -11,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -21,6 +21,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URI;
@@ -29,24 +31,23 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import static com.sun.tools.javac.util.Constants.format;
-
-public class Controller implements Initializable {
+public class Controller implements Initializable,ActionListener{
 
 
     private SystemTray tray = SystemTray.getSystemTray( );
     private PopupMenu popup = new PopupMenu( );
     private TrayIcon trayIcon;
+
     @FXML
     private TextField TF1, TF2, TF3, TF4;
+
     @FXML
-    private ImageView ImgBtn;
+    private ImageView Img;
+
     @FXML
     private Label TimerLb, LbSave, LbExit;
     private boolean alt = false;
@@ -175,7 +176,18 @@ public class Controller implements Initializable {
             //Is Not Supported
         }
     }
-
+    private void initImgBtn(){
+        Img.setOnMousePressed(event -> {
+            Img.setX(Img.getX()+2);
+            Img.setY(Img.getY()+2);
+        });
+        Img.setOnMouseReleased(event -> {
+            Img.setX(Img.getX()-2);
+            Img.setY(Img.getY()-2);
+            Stage stage = (Stage) Img.getScene( ).getWindow( );
+            stage.setIconified(true);;
+        });
+    }
     private void initTimer() {
         TimerLb.setAlignment(Pos.CENTER);
 
@@ -194,11 +206,21 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initTimer();
+
+
         initGlobalHook();
+        initTimer();
         initLbExit();
+        initImgBtn();
         initTrayIcon();
 
+
+
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
