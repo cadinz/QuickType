@@ -90,11 +90,11 @@ public class Controller implements Initializable {
         }
     }
 
-    private Image createImage(String path) {
-        URL imageURL = Controller.class.getResource(path);
+    private Image createImage(String path) throws ClassNotFoundException {
+        URL imageURL = Class.forName("exec.Main").getResource(path);
 
         if (imageURL == null) {
-            System.err.println("Resource not found: " + path);
+            System.err.println("Rddesource not found: " + path);
             return null;
         } else {
             return (new ImageIcon(imageURL, "tray icon")).getImage( );
@@ -102,10 +102,10 @@ public class Controller implements Initializable {
 
     }
 
-    private void getTFText() {
+    private void getTFText(){
         try {
 
-            File file = new File("command.txt");
+            File file = new File(String.valueOf(Class.forName("exec.Main").getResource("command.txt")));
             if (!file.exists( )) {
                 new FileWriter(file);
             }
@@ -124,6 +124,8 @@ public class Controller implements Initializable {
         } catch (FileNotFoundException e) {
             e.printStackTrace( );
         } catch (IOException e) {
+            e.printStackTrace( );
+        } catch (ClassNotFoundException e) {
             e.printStackTrace( );
         }
     }
@@ -184,7 +186,7 @@ public class Controller implements Initializable {
 
         if (SystemTray.isSupported( )) {
             try {
-                TrayIcon trayIcon = new TrayIcon(createImage("../resources/QuickTypeIcon.png"));
+                TrayIcon trayIcon = new TrayIcon(createImage("resources/QuickTypeIcon.png"));
                 trayIcon.setImageAutoSize(true);
                 tray.add(trayIcon);
                 MenuItem exitItem = new MenuItem("Exit");
@@ -264,7 +266,7 @@ public class Controller implements Initializable {
                 sleep(100);
                 try {
 
-                    BufferedWriter out = new BufferedWriter(new FileWriter("command.txt"));
+                    BufferedWriter out = new BufferedWriter(new FileWriter(String.valueOf(Class.forName("exec.Main").getResource("command.txt"))));
                     out.write(TF1.getText( ) + "\n");
                     out.write(TF2.getText( ) + "\n");
                     out.write(TF3.getText( ) + "\n");
@@ -272,6 +274,8 @@ public class Controller implements Initializable {
                     out.flush( );
                     out.close( );
                 } catch (IOException e) {
+                    e.printStackTrace( );
+                } catch (ClassNotFoundException e) {
                     e.printStackTrace( );
                 }
 

@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="QuickType">
+    <output-path>$PROJECT_DIR$/out/artifacts/QuickType</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="exec.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="icons">
+          <JavaFxApplicationIcons>
+            <option name="linuxIcon" value="$PROJECT_DIR$/src/exec/resources/QuickTypeIcon.png.icns" />
+            <option name="macIcon" value="$PROJECT_DIR$/src/exec/resources/QuickTypeIcon.png.icns" />
+            <option name="windowsIcon" value="$PROJECT_DIR$/src/exec/resources/QuickTypeIcon.png.icns" />
+          </JavaFxApplicationIcons>
+        </option>
+        <option name="nativeBundle" value="dmg" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="QuickType.jar">
+        <element id="module-output" name="QuickType" />
+      </element>
+    </root>
+  </artifact>
+</component>

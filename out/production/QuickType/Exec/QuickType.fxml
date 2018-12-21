@@ -6,6 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
+
 <HBox fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="340.0" style="-fx-background-radius: 50;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <children>
       <Pane fx:id="pane" prefHeight="579.0" prefWidth="358.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 30;">
@@ -36,7 +38,7 @@
             </Pane>
             <ImageView fx:id="Img" fitHeight="74.0" fitWidth="73.0" layoutX="134.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@button.png" />
+                  <Image url="@resources/button.png" />
                </image>
             </ImageView>
          </children>

@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../resources/QuickType.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("QuickType.fxml"));
         primaryStage.setTitle("QUICKTYPE");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
