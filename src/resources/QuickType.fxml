@@ -24,10 +24,10 @@
                      <font>
                         <Font name="Apple Braille" size="18.0" />
                      </font></Label>
-                  <Label layoutX="240.0" layoutY="137.0" text="Alt + 1" />
-                  <Label layoutX="240.0" layoutY="196.0" text="Alt + 2" />
-                  <Label layoutX="240.0" layoutY="248.0" text="Alt + 3" />
-                  <Label layoutX="240.0" layoutY="297.0" text="Alt + 4" />
+                  <Label layoutX="240.0" layoutY="137.0" text="Ctrl + 1" />
+                  <Label layoutX="240.0" layoutY="196.0" text="Ctrl + 2" />
+                  <Label layoutX="240.0" layoutY="248.0" text="Ctrl + 3" />
+                  <Label layoutX="240.0" layoutY="297.0" text="Ctrl + 4" />
                   <TextField fx:id="TF1" layoutX="42.0" layoutY="132.0" />
                   <TextField fx:id="TF2" layoutX="42.0" layoutY="191.0" />
                   <TextField fx:id="TF3" layoutX="42.0" layoutY="243.0" />

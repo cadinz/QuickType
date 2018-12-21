@@ -34,8 +34,6 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import static java.awt.event.KeyEvent.getExtendedKeyCodeForChar;
-
 public class Controller implements Initializable {
 
 
@@ -52,6 +50,37 @@ public class Controller implements Initializable {
     @FXML
     private Label TimerLb, LbSave, LbExit;
     private boolean alt = false;
+
+
+    private void pressString(String str) {
+        String text = str;
+        StringSelection stringSelection = new StringSelection(text);
+        Clipboard clipboard = Toolkit.getDefaultToolkit( ).getSystemClipboard( );
+        clipboard.setContents(stringSelection, stringSelection);
+
+
+        Robot rb = null;
+        try {
+            rb = new Robot( );
+        } catch (AWTException e) {
+            e.printStackTrace( );
+        }
+        rb.keyPress(KeyEvent.VK_META);
+
+        NativeKeyEvent keyEvent = new NativeKeyEvent(NativeKeyEvent.NATIVE_KEY_PRESSED, // Modifiers
+                0x00, // Raw Code
+                179, NativeKeyEvent.VC_V, NativeKeyEvent.CHAR_UNDEFINED);
+        GlobalScreen.postNativeEvent(keyEvent);
+
+        rb.keyRelease(KeyEvent.VK_META);
+
+
+        NativeKeyEvent keyEvent4 = new NativeKeyEvent(NativeKeyEvent.NATIVE_KEY_RELEASED, // Modifiers
+                0x00, // Raw Code
+                179, NativeKeyEvent.VC_V, NativeKeyEvent.CHAR_UNDEFINED);
+        GlobalScreen.postNativeEvent(keyEvent4);
+
+    }
 
     private void sleep(long millis) {
         try {
@@ -112,65 +141,31 @@ public class Controller implements Initializable {
         GlobalScreen.addNativeKeyListener(new NativeKeyListener( ) {
 
 
-
             @Override
             public void nativeKeyTyped(NativeKeyEvent e) {
             }
 
             @Override
             public void nativeKeyPressed(NativeKeyEvent e) {
-                if (e.getKeyCode( ) == NativeKeyEvent.VC_META) {
+                if (e.getKeyCode( ) == NativeKeyEvent.VC_CONTROL) {
                     alt = true;
                 }
 
-                if (e.getKeyCode( ) == NativeKeyEvent.VC_1 && alt) {
-
-                    String text = TF1.getText()+"";
-                    StringSelection stringSelection = new StringSelection(text);
-                    Clipboard clipboard = Toolkit.getDefaultToolkit( ).getSystemClipboard( );
-                    clipboard.setContents(stringSelection, stringSelection);
-                    Robot robot = null;
-
-
-
-                    try {
-                        robot = new Robot( );
-                    } catch (AWTException e1) {
-                        e1.printStackTrace( );
+                if (e.getModifiers( ) == 40962) {
+                    switch (e.getKeyCode( )) {
+                        case NativeKeyEvent.VC_1:
+                            pressString(TF1.getText( ) + "");
+                            break;
+                        case NativeKeyEvent.VC_2:
+                            pressString(TF2.getText( ) + "");
+                            break;
+                        case NativeKeyEvent.VC_3:
+                            pressString(TF3.getText( ) + "");
+                            break;
+                        case NativeKeyEvent.VC_4:
+                            pressString(TF4.getText( ) + "");
+                            break;
                     }
-
-                    robot.keyPress(KeyEvent.VK_META);
-                    robot.keyPress(KeyEvent.VK_V);
-                    robot.keyRelease(KeyEvent.VK_V);
-                    robot.keyRelease(KeyEvent.VK_META);
-                }
-                if (e.getKeyCode( ) == NativeKeyEvent.VC_ALT && alt) {
-                    Robot robot = null;
-
-
-
-                    try {
-                        robot = new Robot( );
-                    } catch (AWTException e1) {
-                        e1.printStackTrace( );
-                    }
-
-                    String keys = "hello world";
-                    sleep(100);
-
-                    for (char c : keys.toCharArray()) {
-                        int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-                        if (KeyEvent.CHAR_UNDEFINED == keyCode) {
-                            throw new RuntimeException(
-                                    "Key code not found for character '" + c + "'");
-                        }
-                        robot.keyPress(keyCode);
-                        robot.keyRelease(keyCode);
-                    }
-                }
-                if (e.getKeyCode( ) == NativeKeyEvent.VC_3 && alt) {
-                    Platform.exit( );
-                    System.exit(0);
                 }
 
                 System.out.println(NativeKeyEvent.getKeyText(e.getKeyCode( )));
@@ -178,7 +173,7 @@ public class Controller implements Initializable {
 
             @Override
             public void nativeKeyReleased(NativeKeyEvent e) {
-                if (e.getKeyCode( ) == NativeKeyEvent.VC_META) {
+                if (e.getKeyCode( ) == NativeKeyEvent.VC_CONTROL) {
                     alt = false;
                 }
             }
